@@ -28,7 +28,7 @@ public class Account {
         if(amount <= this.balance){
             this.balance -= amount;
             this.amountWithdrawn += amount;
-            System.out.println(amount + " withdrawn. New balance " + this.balance);
+            System.out.println(amount + " withdrawn. New balance " + this.balance + " Total withdrawn: " + this.amountWithdrawn);
         }
         else{
             System.out.println("Insufficient funds. Total withdrawn: " + this.amountWithdrawn);
