@@ -2,7 +2,7 @@ package org.example;
 
 public class Simulation {
 
-    public void runSim(){
+    public void runSim() throws InterruptedException {
         System.out.println("Running simulation");
         Account myAccount = new Account(1000);
 
@@ -16,8 +16,14 @@ public class Simulation {
         };
 
         Thread thread1 = new Thread(runWithdraw, "Thread 1");
+        Thread thread2 = new Thread(runWithdraw, "Thread 2");
         thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
 
-        System.out.println("End of Simulation. Total balance: " + myAccount.getBalance());
+        System.out.println("End of Simulation. " +
+                "Total withdrawn: " + myAccount.getAmountWithdrawn() +
+                ". Current balance: " + myAccount.getBalance());
     }
 }
