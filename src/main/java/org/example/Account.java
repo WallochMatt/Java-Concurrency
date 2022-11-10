@@ -24,7 +24,7 @@ public class Account {
         this.balance = balance;
     }
 
-    public void withdraw(int amount) throws InterruptedException {
+    public synchronized void withdraw(int amount) throws InterruptedException {
         String threadName = Thread.currentThread().getName();
 
         if(amount <= this.balance){

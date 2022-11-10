@@ -6,9 +6,7 @@ public class Simulation {
         System.out.println("Running simulation");
         Account myAccount = new Account(1000);
 
-        Runnable runWithdraw = new Runnable() {
-            @Override
-            public void run() {
+        Runnable runWithdraw = () -> {
                 for (int i = 0; i < 10; i++) {
                     try {
                         myAccount.withdraw(100);
@@ -16,7 +14,6 @@ public class Simulation {
                         throw new RuntimeException(e);
                     }
                 }
-            }
         };
 
         Thread thread1 = new Thread(runWithdraw, "Thread 1");
