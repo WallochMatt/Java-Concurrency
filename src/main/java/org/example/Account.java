@@ -24,10 +24,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public void withdraw(int amount){
+    public void withdraw(int amount) throws InterruptedException {
         String threadName = Thread.currentThread().getName();
 
         if(amount <= this.balance){
+            Thread.sleep(50); //simulating retrieval of outside information
             this.balance -= amount;
             this.amountWithdrawn += amount;
             System.out.println(amount + " withdrawn by " +threadName + " New balance " + this.balance + " Total withdrawn: " + this.amountWithdrawn);
